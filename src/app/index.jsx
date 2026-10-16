@@ -1,7 +1,7 @@
 import {Text,TextInput,Button,Alert,View,Image,StyleSheet} from "react-native";
 import React, {useState} from "react";
 export default function Index(){
-   const [duvida,setDuvida] = useState('');
+   const [texto,setDuvida] = useState('');
    const enviarDuvida = async() =>{
       try{
          const response = await fetch('http://localhost:8080/duvida',{
@@ -9,7 +9,7 @@ export default function Index(){
             headers:{
                'Content-Type':'application/json',
             },
-            body:JSON.stringify({duvida}),
+            body:JSON.stringify({texto}),
          });
          Alert.alert("Dúvida enviada com sucesso!");
 
@@ -24,7 +24,7 @@ export default function Index(){
            <TextInput
              style={styles.input}
              placeholder="Digite sua dúvida..."
-             value={duvida}
+             value={texto}
              onChangeText={setDuvida}
            />
            <Button 
